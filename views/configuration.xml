@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_academic_year_tree" model="ir.ui.view">
+            <field name="name">academic.year.tree</field>
+            <field name="model">academic.year</field>
+            <field name="arch" type="xml">
+                <tree string="Academic Years">
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="date_start"/>
+                    <field name="date_stop"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_academic_year_form" model="ir.ui.view">
+            <field name="name">acdemic.year.form</field>
+            <field name="model">academic.year</field>
+            <field name="arch" type="xml">
+                <form string="Academic Years">
+                    <!--                    <header>-->
+                    <!--                        <button name="generate_academicmonth" type="object" string="Generate Months"/>-->
+                    <!--                    </header>-->
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="name" placeholder="Name"/>
+                            <field name="code" placeholder="Code"/>
+                            <field name="date_start" placeholder="Start Date"/>
+                            <field name="date_stop" placeholder="End Date"/>
+                            <field name="sequence"/>
+                            <field name="current" widget="boolean_toggle"/>
+                            <!--        <field name="grade_id" placeholder="Grade System" options="{" no_open": True, "no_create": True}" invisible="1"-->
+                            <!--        />-->
+                        </group>
+                        <!--    <notebook colspan="4">-->
+                        <!--    <page string="Months">-->
+                        <!--    <field name="month_ids" nolabel="1" colspan="4" options="{"no_open": True, "no_create": True}">-->
+                        <!--    <tree string="Months">-->
+                        <!--        <field name="name"/>-->
+                        <!--        <field name="code"/>-->
+                        <!--        <field name="date_start"/>-->
+                        <!--        <field name="date_stop"/>-->
+                        <!--    </tree>-->
+                        <!--    <form string="Months">-->
+                        <!--        <group col="4" colspan="4">-->
+                        <!--            <field name="name" placeholder="Name"/>-->
+                        <!--            <field name="code" placeholder="Code"/>-->
+                        <!--            <field name="date_start" placeholder="Start Date"/>-->
+                        <!--            <field name="date_stop" placeholder="Stop Date"/>-->
+                        <!--            <field name="description" colspan="4" placeholder="Description"/>-->
+                        <!--        </group>-->
+                        <!--    </form>-->
+                        <!--</field>-->
+                        <!--</page>-->
+                        <!--        </notebook>-->
+                        <newline/>
+                        <separator string="Description" colspan="4"/>
+                        <field name="description" colspan="4" placeholder="Description"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="academic_year_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">academic.year</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    enter you first student !
+                </p>
+                <p>
+                    be careful and start your first steps !
+                </p>
+            </field>
+        </record>
+        <!--  From View Of Standard Medium Information  -->
+        <record id="view_class_speciality_form" model="ir.ui.view">
+            <field name="name">class.speciality.form</field>
+            <field name="model">class.speciality</field>
+            <field name="arch" type="xml">
+                <form string="speciality">
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="no"/>
+                            <field name="name" placeholder="Name"/>
+                            <field name="code" placeholder="Code"/>
+                            <newline/>
+                            <field name="description" colspan="4" placeholder="Description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  Tree View Of Standard Medium Information  -->
+        <record id="view_class_speciality_tree" model="ir.ui.view">
+            <field name="name">class.speciality.tree</field>
+            <field name="model">class.speciality</field>
+            <field name="arch" type="xml">
+                <tree string="speciality">
+                    <field name="no"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <record id="class_speciality_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">class.speciality</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    enter you first student !
+                </p>
+                <p>
+                    be careful and start your first steps !
+                </p>
+            </field>
+        </record>
+
+        <record id="view_class_niveau_form" model="ir.ui.view">
+            <field name="name">class.niveau.form</field>
+            <field name="model">class.niveau</field>
+            <field name="arch" type="xml">
+                <form string="class.niveau">
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="no"/>
+                            <field name="name" placeholder="Name"/>
+                            <field name="code" placeholder="Code"/>
+                            <newline/>
+                            <field name="description" colspan="4" placeholder="Description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_class_niveau_tree" model="ir.ui.view">
+            <field name="name">class.niveau.tree</field>
+            <field name="model">class.niveau</field>
+            <field name="arch" type="xml">
+                <tree string="niveau">
+                    <field name="no"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <record id="class_niveau_action" model="ir.actions.act_window">
+            <field name="name">niveau</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">class.niveau</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    enter you first niveau !
+                </p>
+                <p>
+                    be careful and start your first steps !
+                </p>
+            </field>
+        </record>
+        <record id="view_document_type_form" model="ir.ui.view">
+            <field name="name">document.type.form</field>
+            <field name="model">document.type</field>
+            <field name="arch" type="xml">
+                <form string="Document Type">
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="seq_no"/>
+                            <field name="doc_type" placeholder="Document Type"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_document_type_tree" model="ir.ui.view">
+            <field name="name">document.type.tree</field>
+            <field name="model">document.type</field>
+            <field name="arch" type="xml">
+                <tree string="Document Type">
+                    <field name="seq_no"/>
+                    <field name="doc_type"/>
+                </tree>
+            </field>
+        </record>
+        <record id="document_type_action" model="ir.actions.act_window">
+            <field name="name">document type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">document.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    enter you first niveau !
+                </p>
+                <p>
+                    be careful and start your first steps !
+                </p>
+            </field>
+        </record>
+
+
+
+        <menuitem id="configuration_id"
+                  name="configuration"
+                  parent="school_root"
+                  sequence="1"/>
+        <menuitem id="academic_year_id"
+                  name="academic_year"
+                  parent="configuration_id"
+                  action="academic_year_action"
+                  sequence="2"/>
+        <menuitem id="class_speciality_id"
+                  name="speciality class"
+                  parent="configuration_id"
+                  action="class_speciality_action"
+                  sequence="2"/>
+        <menuitem id="class_niveau_id"
+                  name="niveau class"
+                  parent="configuration_id"
+                  action="class_niveau_action"
+                  sequence="2"/>
+        <menuitem id="document_type_id"
+                  name="document type"
+                  parent="configuration_id"
+                  action="document_type_action"
+                  sequence="2"/>
+
+    </data>
+
+</odoo>
+
+
+

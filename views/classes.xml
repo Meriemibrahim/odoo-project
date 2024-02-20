@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="view_class_room_form" model="ir.ui.view">
+            <field name="name">class.room.form</field>
+            <field name="model">class.room</field>
+            <field name="arch" type="xml">
+                <form string="Standard Information">
+                <sheet>
+                <separator string="Standard Information"/>
+                <group col="4" colspan="4">
+                    <field name="speciality_id" widget="selection" placeholder="Standard"/>
+                    <field name="niveau_id" widget="selection" placeholder="Division"/>
+                    <field name="school_id" widget="selection" placeholder="School"/>
+                    <field name="user_id" placeholder="Select Faculty Name" widget="selection"/>
+                    <field name="capacity"/>
+                    <field name="total_students"/>
+                    <field name="remaining_seats"/>
+                    <field name="name" invisible="1"/>
+                    <field name="total_no_matieres" invisible="1"/>
+                </group>
+                <notebook colspan="4">
+                <page string="Students" name="students">
+                    <field name="student_ids" nolabel="1" colspan="4">
+                        <tree string="Student Information">
+                            <field name="name"/>
+                            <field name="year"/>
+                        </tree>
+                        <form string="Student Information">
+                            <group col="4" colspan="4">
+                                <field name="name" placeholder="Name"/>
+                                <field name="year" placeholder="Year"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+                <page string="Subjects">
+                    <field name="matiere_ids" nolabel="1" colspan="4" string="Add matiere"/>
+                </page>
+                     <page string="Teachers" name="teacher">
+                    <field name="teacher_id" nolabel="1" colspan="4">
+                        <kanban string="teacher Information">
+                            <field name="name"/>
+                            <templates>
+                    <t t-name="kanban-box">
+                        <t t-set="color" t-value="kanban_color(record.color.raw_value || record.name.raw_value)"/>
+
+                                <div class="oe_kanban_buttons_set oe_kanban_color_border oe_kanban_color_bglight oe_kanban_box_show_onclick">
+                                    <div class="oe_kanban_left">
+                                        <a role="button" string="Edit" title="Edit"
+                                           class="btn btn-sm btn-default fa fa-pencil"
+                                           type="edit"/>
+                                        <a role="button" string="Change Color" icon="color-picker" type="color"
+                                           name="color"/>
+                                    </div>
+                                    <br class="oe_kanban_clear"/>
+                                </div>
+                    </t>
+                </templates>
+                        </kanban>
+                        <form string="teacher Information">
+                            <group col="4" colspan="4">
+                                <field name="name" placeholder="Name"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+
+</notebook>
+        </sheet>
+        </form>
+        </field>
+        </record>
+<record id="view_class_room_tree" model="ir.ui.view">
+<field name="name">class.room.tree</field>
+<field name="model">class.room</field>
+<field name="arch" type="xml">
+    <tree string="Speciality Information">
+        <field name="speciality_id"/>
+        <field name="user_id"/>
+        <field name="niveau_id"/>
+        <field name="remaining_seats"/>
+    </tree>
+</field>
+</record>
+<record id="class_room_view" model="ir.ui.view">
+<field name="name">class.room.kanban</field>
+<field name="model">class.room</field>
+<field name="arch" type="xml">
+    <kanban default_group_by="speciality_id">
+        <field name="school_id"/>
+        <field name="speciality_id"/>
+        <field name="niveau_id"/>
+        <field name="user_id"/>
+        <field name="color"/>
+        <templates>
+            <t t-name="kanban-box">
+                <t t-set="color" t-value="kanban_color(record.color.raw_value || record.school_id.value)"/>
+                <div t-att-class="color + (record.color.raw_value == 1 ? ' oe_kanban_color_alert' : '')">
+                    <div class="oe_kanban_box oe_kanban_color_border">
+                        <div class="oe_kanban_box_header oe_kanban_color_bgdark oe_kanban_color_border oe_kanban_draghandle">
+                            <table class="oe_kanban_table">
+                                <tr>
+                                    <td class="oe_kanban_title1" align="left" valign="middle">
+                                        <div>
+                                            School :-
+                                            <field name="school_id"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="oe_kanban_box_content oe_kanban_color_bglight oe_kanban_box_show_onclick_trigger oe_kanban_color_border">
+                            <table class="oe_kanban_table">
+                                <tr>
+                                    <td valign="top" align="left">
+                                        <div class="oe_kanban_title2">
+                                            <div>
+                                                Class Teacher :-
+                                                <field name="user_id"/>
+                                            </div>
+                                        </div>
+                                        <div class="oe_kanban_title3">
+                                            <div>
+                                                speciality :-
+                                                <field name="speciality_id"/>
+                                            </div>
+                                            <div>
+                                                Niveau :-
+                                                <field name="niveau_id"/>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="oe_kanban_buttons_set oe_kanban_color_border oe_kanban_color_bglight oe_kanban_box_show_onclick">
+                            <div class="oe_kanban_left">
+                                <a role="button" string="Edit" class="btn btn-sm btn-default fa fa-pencil" type="edit"
+                                   aria-label="edit"/>
+                                <a role="button" string="Delete" class="btn btn-sm btn-default fa fa-trash"
+                                   type="delete" aria-label="delete"/>
+                                <a role="button" string="Change Color" icon="color-picker" type="color" name="color"/>
+                            </div>
+                            <br class="oe_kanban_clear"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </templates>
+    </kanban>
+</field>
+</record>
+<record id="view_student_student_search" model="ir.ui.view">
+<field name="name">school.standard.search</field>
+<field name="model">class.room</field>
+<field name="arch" type="xml">
+    <search string="class Information">
+        <group col="10" colspan="4">
+            <field name="speciality_id"/>
+            <field name="user_id"/>
+            <field name="niveau_id"/>
+        </group>
+        <newline/>
+        <group expand="0" string="Group By..." colspan="12" col="10">
+            <filter name="school" string="School" help="By School" context="{'group_by':'school_id'}"/>
+            <filter name="speciality" string="speciality" help="By speciality" context="{'group_by':'speciality_id'}"/>
+            <filter name="niveau" string="niveau" help="By niveau" context="{'group_by':'niveau_id'}"/>
+        </group>
+    </search>
+</field>
+</record>
+          <record id="action_class_room_action" model="ir.actions.act_window">
+            <field name="name">class room</field>
+            <field name="res_model">class.room</field>
+            <field name="view_mode">search,tree,form</field>
+        </record>
+         <menuitem id="school_root"
+              name="school"
+              web_icon="gestion_ecole,static/description/icon.png"/>
+
+    <menuitem id="class_room_root"
+              name="class list"
+              parent="school_root"
+              action = "action_class_room_action"
+              sequence="10"/>
+        </data>
+        </odoo>

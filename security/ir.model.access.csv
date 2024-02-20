@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_student_student,student_student,model_student_student,base.group_user,1,1,1,1
+access_hr_teacher_teacher_teacher,teacher_teacher_teacher,model_teacher_teacher,base.group_user,1,1,1,1
+access_hr_matiere_matiere,matiere_matiere,model_matiere_matiere,base.group_user,1,1,1,1
+access_hr_class_room,class_room,model_class_room,base.group_user,1,1,1,1
+access_hr_academic_year,academic_year,model_academic_year,base.group_user,1,1,1,1
+access_class_speciality,access_class_speciality,model_class_speciality,base.group_user,1,1,1,1
+access_class_niveau,access_class_niveau,model_class_niveau,base.group_user,1,1,1,1
+access_prix_prix,access_prix_prix,model_prix_prix,base.group_user,1,1,1,1
+access_document_type,access_document_type,model_document_type,base.group_user,1,1,1,1
+
+access_parent_relation,access_parent_relation,model_parent_relation,base.group_user,1,1,1,1
+access_school_parent,access_school_parent,model_school_parent,base.group_user,1,1,1,1
+
+
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--        <record id="form_department" model="ir.ui.view">-->
+<!--            <field name="name">department_inherit</field>-->
+<!--            <field name="model">hr.department</field>-->
+<!--            <field name="inherit_id" ref="hr.view_department_form"/>-->
+<!--        </record>-->
+
+        <menuitem id="hr.menu_hr_department_kanban"
+                  name="departments"
+                  parent="school_root"
+                  action="hr.hr_department_kanban_action"
+                  sequence="1"/>
+
+</odoo>
+
+
